@@ -13,6 +13,6 @@ describe("Food", function(){
   })
 
   it("Food has replenish value", function(){
-    assert.strictEqual(food.replenishValue, 10);
+    assert.strictEqual(food.replenishmentValue, 10);
   })
 })

@@ -2,7 +2,7 @@ const Task = function(difficultyLevel, urgencyLevel, reward){
   this.difficultyLevel = difficultyLevel;
   this.urgencyLevel = urgencyLevel;
   this.reward = reward;
-  this.status = "incompleted";
+  this.status = "incomplete";
 }
 
 Task.prototype.completed = function(){

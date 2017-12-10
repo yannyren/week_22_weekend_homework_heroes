@@ -20,11 +20,11 @@ describe("Task", function(){
     assert.strictEqual(task.reward, 8);
   })
 
-  it("Task has inital status as incompleted", function(){
-    assert.strictEqual(task.status, "incompleted");
+  it("Task has inital status as incomplete", function(){
+    assert.strictEqual(task.status, "incomplete");
   })
 
-  it("Task is able to be marked as completed", function(){
+  it("Task is able to be marked as complete", function(){
     assert.strictEqual(task.completed(), "completed");
   })
 })
