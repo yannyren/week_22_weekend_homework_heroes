@@ -37,8 +37,8 @@ D. Extend your hero.
 - Rats should be able to touch food,  if they do the food becomes poisonous.
 - Heroes that eat poisonous food should lose health.
 
-## Futher
+## Further
 
 Be creative. Extend the game! Give the hero super powers.
 
-Create a supervillian who wants to take over the world!
+Create a super villain who wants to take over the world!
