@@ -8,3 +8,5 @@ const Task = function(difficultyLevel, urgencyLevel, reward){
 Task.prototype.completed = function(){
   this.status = "completed";
 }
+
+module.exports = Task;
