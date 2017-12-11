@@ -25,6 +25,7 @@ describe("Task", function(){
   })
 
   it("Task is able to be marked as complete", function(){
-    assert.strictEqual(task.completed(), "completed");
+    task.completed();
+    assert.strictEqual(task.status, "completed");
   })
 })

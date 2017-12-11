@@ -16,8 +16,8 @@ describe("Rat", function(){
 
   it("Rat can touch food and turn it poisonous", function(){
     rat.touchFood(food);
-    hero.eat(food);
     assert.strictEqual(food.replenishmentValue, -10);
-    assert.strictEqual(hero.health, 90);
+    hero.eat(food);
+    assert.strictEqual(hero.health, 85);
   } )
 })

@@ -10,10 +10,12 @@ Hero.prototype.sayName = function(){
 }
 
 Hero.prototype.eat = function(food){
-  if (food === this.favFood) {
+  if(food.name === this.favFood) {
     this.health += food.replenishmentValue * 1.5;
+  } else {
+    this.health += food.replenishmentValue;
   }
-  this.health = food.replenishmentValue;
+
 }
 
 Hero.prototype.addTask = function(task){
@@ -22,17 +24,17 @@ Hero.prototype.addTask = function(task){
 
 Hero.prototype.sortTasks = function(criterion) {
   this.tasks.sort(function(task1, task2){
-    return task1.criterion - task2.criterion;
+    return task1[criterion] - task2[criterion];
   })
 }
 
 Hero.prototype.viewTasksByStatus = function(status) {
   if(this.tasks.length === 0){
     return "hero has no tasks yet."
-  }
-  return this.tasks.map(function(task){
+  } else {
+  return this.tasks.filter(function(task){
     return task.status === status;
-    })
+  })}
 }
 
 

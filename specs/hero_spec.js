@@ -17,10 +17,10 @@ describe("Hero", function(){
     hero = new Hero("Jack", 100, "curry");
     food1 = new Food("carrot", 10);
     food2 = new Food("curry", 10);
-    task1 = new Task(10, 8 ,5 , incomplete);
-    task2 = new Task(9, 10, 4, incomplete);
-    task3 = new Task(12, 3, 10, complete);
-    task4 = new Task(3, 7, 8, complete);
+    task1 = new Task(10, 8 ,5);
+    task2 = new Task(9, 10, 4);
+    task3 = new Task(12, 3, 10);
+    task4 = new Task(3, 7, 8);
 
   })
 
@@ -59,33 +59,54 @@ describe("Hero", function(){
     assert.strictEqual(hero.tasks.length, 1);
   })
 
-  it("Hero can sort tasks by difficulty, urgency or reward", function(){
+  it("Hero can sort tasks by difficulty", function(){
     hero.addTask(task1);
     hero.addTask(task2);
     hero.addTask(task3);
     hero.addTask(task4);
-    let result1 = hero.sortTasks(difficultyLevel);
-    let result2 = hero.sortTasks(urgencyLevel);
-    let result3 = hero.sortTasks(reward);
-    assert.strictDeepEqual(result1, [task4, task2, task1, task3]);
-    assert.strictDeepEqual(result2, [task3, task4, task1, task2]);
-    assert.strictDeepEqual(result1, [task2, task1, task4, task3]);
+    hero.sortTasks("difficultyLevel");
+    assert.deepStrictEqual(hero.tasks, [task4, task2, task1, task3]);
+
   })
 
-  it("Hero is able to see tasks that are marked completed", function(){
+  it("Hero can sort tasks by urgency", function(){
     hero.addTask(task1);
     hero.addTask(task2);
     hero.addTask(task3);
     hero.addTask(task4);
+    hero.sortTasks("urgencyLevel");
+
+    assert.deepStrictEqual(hero.tasks, [task3, task4, task1, task2]);
+  })
+
+  it("Hero can sort tasks by reward", function(){
+    hero.addTask(task1);
+    hero.addTask(task2);
+    hero.addTask(task3);
+    hero.addTask(task4);
+    hero.sortTasks("reward");
+
+    assert.deepStrictEqual(hero.tasks, [task2, task1, task4, task3]);
+  })
+
+
+  it("Hero is able to see tasks that are marked completed", function(){
+    task3.completed();
+    task4.completed();
+    hero.addTask(task1);
+    hero.addTask(task2);
+    hero.addTask(task3);
+    hero.addTask(task4);
+
     let completedTasks = hero.viewTasksByStatus("completed");
     let incompleteTasks = hero.viewTasksByStatus("incomplete")
-    assert.stictDeepEqual(completedTasks, [task3, task4]);
-    assert.strictDeepEqual(incompleteTasks, [task1, task2]);
+    assert.deepStrictEqual(completedTasks, [task3, task4]);
+    assert.deepStrictEqual(incompleteTasks, [task1, task2]);
   })
 
   it("Hero has response when no tasks in the list to sort", function(){
-    assert.strictDeepEqual(hero.viewTasksByStatus("complete"), "hero has no tasks yet.");
-    assert.strictDeepEqual(hero.viewTasksByStatus("incomplete"), "hero has no tasks yet.")
+    assert.deepEqual(hero.viewTasksByStatus("complete"), "hero has no tasks yet.");
+    assert.deepEqual(hero.viewTasksByStatus("incomplete"), "hero has no tasks yet.")
   })
 
 })
